@@ -1,0 +1,24 @@
+﻿@page "/"
+@using ListComponentIssue.Shared
+
+<h1>List from Index</h1>
+
+@if (damn != null)
+{
+
+    <div style="border:1px solid;">
+        @foreach (var a in damn)
+        {
+        <div>@a.Id : @a.Title  </div>
+        }
+    </div>
+
+    <div style="display:flex; flex-direction:row;">
+        @foreach (var b in damn)
+        {
+            <MyComponent fakeStuff="@b" Close="close"></MyComponent>
+
+        }
+    </div>
+}
+

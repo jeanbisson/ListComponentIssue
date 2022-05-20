@@ -1,0 +1,38 @@
+﻿
+<div style="border:1px solid; margin:20px;">
+    <div style="margin:5px;">
+        @fakeStuff.Title is @IsBad
+    </div>
+    <div>
+        <button @onclick="toggle">toggle</button>
+        <button @onclick="() => CloseToParent(fakeStuff)">close</button>
+    </div>
+</div>
+@code {
+
+    private bool IsBad { get; set; }
+
+    [Parameter]
+    public FakeStuff fakeStuff { get; set; }
+
+    [Parameter]
+    public EventCallback<FakeStuff> Close { get; set; }
+
+    private void toggle()
+    {
+        IsBad = !IsBad;
+    }
+
+    public async Task CloseToParent(FakeStuff what)
+    {
+        await Close.InvokeAsync(what);
+    }
+
+    public class FakeStuff
+    {
+        public string Id { get; set; }
+        public string Title { get; set; }
+
+    }
+}
+
