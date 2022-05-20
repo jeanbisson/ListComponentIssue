@@ -1,34 +1,36 @@
 ﻿
 <div style="border:1px solid; margin:20px;">
     <div style="margin:5px;">
-        @fakeStuff.Title is @IsBad
+        @ThisItem.Title is @isSomething
     </div>
     <div>
-        <button @onclick="toggle">toggle</button>
-        <button @onclick="() => CloseToParent(fakeStuff)">close</button>
+        <button @onclick="toggleBool">Toggle bool</button>
+        <button @onclick="() => CloseToParent(ThisItem)">close</button>
     </div>
 </div>
+
+
 @code {
 
-    private bool IsBad { get; set; }
+    private bool isSomething { get; set; }
 
     [Parameter]
-    public FakeStuff fakeStuff { get; set; }
+    public Item ThisItem { get; set; }
 
     [Parameter]
-    public EventCallback<FakeStuff> Close { get; set; }
+    public EventCallback<Item> Close { get; set; }
 
-    private void toggle()
+    private void toggleBool()
     {
-        IsBad = !IsBad;
+        isSomething = !isSomething;
     }
 
-    public async Task CloseToParent(FakeStuff what)
+    public async Task CloseToParent(Item itemToClose)
     {
-        await Close.InvokeAsync(what);
+        await Close.InvokeAsync(itemToClose);
     }
 
-    public class FakeStuff
+    public class Item
     {
         public string Id { get; set; }
         public string Title { get; set; }

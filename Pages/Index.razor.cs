@@ -1,58 +1,55 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using static ListComponentIssue.Shared.MyComponent;
 
 namespace ListComponentIssue.Pages
 {
     public partial class Index
     {
-        private List<FakeStuff> damn = new List<FakeStuff>();
+        private List<Item> listOfItems = new List<Item>();
 
         protected override void OnInitialized()
         {
             base.OnInitialized();
-            damn.Add(
-                new FakeStuff()
+            listOfItems.Add(
+                new Item()
                 {
                     Id = "1",
-                    Title = "What"
+                    Title = "First"
                 }
             );
-            damn.Add(
-                new FakeStuff()
+            listOfItems.Add(
+                new Item()
                 {
                     Id = "2",
-                    Title = "What"
+                    Title = "Second"
                 }
             );
-            damn.Add(
-             new FakeStuff()
+            listOfItems.Add(
+             new Item()
              {
                  Id = "3",
-                 Title = "in"
+                 Title = "Third"
              }
          );
-            damn.Add(
-             new FakeStuff()
+            listOfItems.Add(
+             new Item()
              {
                  Id = "4",
-                 Title = "the"
+                 Title = "Fourth"
              }
          );
-            damn.Add(
-             new FakeStuff()
+            listOfItems.Add(
+             new Item()
              {
                  Id = "5",
-                 Title = "button"
+                 Title = "Fifth"
              }
          );
         }
 
-        public void close(FakeStuff what)
+        public void close(Item itemToRemove)
         {
-            damn.Remove(what);
+            listOfItems.Remove(itemToRemove);
         }
 
     }

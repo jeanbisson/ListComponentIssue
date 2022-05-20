@@ -1,24 +1,32 @@
 ﻿@page "/"
 @using ListComponentIssue.Shared
 
-<h1>List from Index</h1>
+<h1>List Component Issue</h1>
 
-@if (damn != null)
+
+@if (listOfItems != null)
 {
-
     <div style="border:1px solid;">
-        @foreach (var a in damn)
+        Item list in Index.razor.cs:
+        @foreach (var item in listOfItems)
         {
-        <div>@a.Id : @a.Title  </div>
+            <div>Id: @item.Id Title: @item.Title</div>
         }
     </div>
 
-    <div style="display:flex; flex-direction:row;">
-        @foreach (var b in damn)
-        {
-            <MyComponent fakeStuff="@b" Close="close"></MyComponent>
+    <ul>
+        <li>5 items list. </li>
+        <li> Toggle bool to something different than next component on the right.</li>
+        <li>Close button will remove that item from the list.</li>
+        <li>Watch as the bools shifts</li>
+    </ul>
+    <label>why ??</label>
 
-        }
-    </div>
+<div style="display:flex; flex-direction:row;">
+    @foreach (var item in listOfItems)
+    {
+        <MyComponent ThisItem="@item" Close="close"></MyComponent>
+    }
+</div>
 }
 
